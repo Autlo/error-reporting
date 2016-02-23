@@ -1,0 +1,31 @@
+{
+  "name": "error-reporing",
+  "description": "Reporting errors to email.",
+  "version": "0.0.1",
+  "author": "Rain Ramm <rain@autlo.com>",
+  "license": "MIT",
+  "repository": "autlo/error-reporting",
+  "homepage": "http://autlo.com",
+  "main": "index.js",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "moment": "^2.11.2",
+    "nodemailer": "^2.2.1"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "src/"
+  ],
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "keywords": [
+    "database",
+    "mysql"
+  ]
+}
