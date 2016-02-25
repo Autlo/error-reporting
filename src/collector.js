@@ -17,12 +17,27 @@ module.exports.init = function (interval, sendEmails)
 
     sendEmail();
 
+    this.handleUncaughtExceptionEvent();
+
     if (interval === 0 || interval === null) {
         alwaysSendMail = true;
         return;
     }
 
     setInterval(sendEmail, interval * 1000);
+};
+
+module.exports.handleUncaughtExceptionEvent = function ()
+{
+    process.on('uncaughtException', function () {
+
+        // todo
+
+        // spawn new process that sends the error mail and then kills itself
+        // must not be child process as that will get killed once main process exits
+        // nodemailer conf has to be improved, since we cannot pass transporter object to another process
+        // only do this if we have mail sending enabled, otherwise there is not point in doing so
+    });
 };
 
 /**
