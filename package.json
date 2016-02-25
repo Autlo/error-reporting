@@ -19,7 +19,8 @@
     "LICENSE",
     "README.md",
     "index.js",
-    "src/"
+    "src/",
+    "templates/"
   ],
   "scripts": {
     "postversion": "git push && git push --tags && npm publish"

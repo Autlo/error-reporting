@@ -23,7 +23,9 @@ exports.init = function (config)
     cc = config.cc;
     subject = config.subject;
 
-    var contents = fs.readFileSync('./templates/error-mail.handlebars', {
+    var path = __filename.replace('/src/mailer.js', '');
+
+    var contents = fs.readFileSync(path + '/templates/error-mail.handlebars', {
         encoding: 'utf8'
     });
 
