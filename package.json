@@ -1,7 +1,7 @@
 {
   "name": "error-reporting",
   "description": "Reporting errors to email.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Rain Ramm <rain@autlo.com>",
   "license": "MIT",
   "repository": "autlo/error-reporting",
