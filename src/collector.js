@@ -31,7 +31,7 @@ module.exports.init = function (interval, sendEmails)
  * @param {String} stack
  * @param {Boolean} immediate - if true flushes error queue immediately
  */
- module.exports.report = function (text, additionalData, stack, immediate)
+module.exports.report = function (text, additionalData, stack, immediate)
 {
     var time = moment().format();
 

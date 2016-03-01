@@ -11,7 +11,7 @@ module.exports.init = function (config)
     config = mergeConf(config || {});
 
     mailer.init(config);
-    collector.init(config.interval, !!config.transporter);
+    collector.init(config.interval, config.transporter !== null);
 };
 
 /**

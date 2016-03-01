@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var handlebars = require('handlebars');
-var mailer = require('nodemailer');
 
 var template = null;
 var transporter = null;
@@ -16,7 +15,7 @@ var subject = 'Errors';
  */
 exports.init = function (config)
 {
-    transporter = mailer.createTransport(config.transport);
+    transporter = config.transporter;
 
     from = config.from;
     to = config.to;
@@ -34,9 +33,8 @@ exports.init = function (config)
 
 /**
  * @param {String} html
- * @param {Function} callback(err)
  */
-exports.send = function (html, callback)
+exports.send = function (html)
 {
     var retryCount = 0;
     var options = {
@@ -51,30 +49,31 @@ exports.send = function (html, callback)
 
     function send(options, callback)
     {
-        transporter.send(options, callback)
+        transporter.sendMail(options, callback)
     }
 
     function responseHandler(err)
     {
-        if (err && retryCount < 5) {
+        if (!err) return;
+
+        if (retryCount < 5) {
             retryCount++;
 
             setTimeout(function () {
                 send(options, responseHandler);
             }, 500);
         } else {
-            callback(err);
+            throw err;
         }
     }
 };
 
 /**
  * @param {Object} params
- * @param {Function} callback
  */
-exports.sendTemplate = function (params, callback)
+exports.sendTemplate = function (params)
 {
-    exports.send(createHtml(params), callback);
+    exports.send(createHtml(params));
 };
 
 function createHtml(variables)
