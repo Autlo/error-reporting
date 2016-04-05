@@ -28,7 +28,7 @@ error.init({
 
 // to report an error, just call error.report() anywhere in your application
 var err = new Error();
-error.report('A message about your error', {objectThatCasedTheError: {foo: 'bar'}}, err.stack);
+error.report('A message about your error', {objectThatCausedTheError: {foo: 'bar'}}, err.stack);
 ```
 
 ## Configuration options
